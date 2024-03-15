@@ -13,7 +13,7 @@ Check nodeJS version and upgrade to latest.
 Command to install
 ```bash
 apt purge nodejs
-curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - 
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - 
 sudo apt-get install -y nodejs
 ```
 Source: https://github.com/nodesource/distributions
