@@ -16,6 +16,12 @@ apt purge nodejs
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - 
 sudo apt-get install -y nodejs
 ```
+Cleaning trace
+```bash
+apt-get purge nodejs &&\
+rm -r /etc/apt/sources.list.d/nodesource.list &&\
+rm -r /etc/apt/keyrings/nodesource.gpg
+```
 Source: https://github.com/nodesource/distributions
 ### Install NPM
 
