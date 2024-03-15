@@ -12,7 +12,7 @@ Check nodeJS version and upgrade to latest.
 
 Command to install
 ```bash
-apt purge nodejs
+apt purge nodejs -y
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
 ```
