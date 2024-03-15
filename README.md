@@ -2,9 +2,12 @@
 
 ## EXPO
 
+Check nodeJS version and upgrade to latest.
+
 Install expo `sudo npm install -g expo-cli`
 
 NPM app file creation `expo init APP_NAME`
+
 
 
 To run your project, navigate to the directory and run one of the following npm commands.
