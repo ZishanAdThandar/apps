@@ -1,5 +1,6 @@
 - [EXPO](#expo)
   - [Upgrade NodeJS](#upgrade-nodejs)
+  - [Install NPM](#install-npm)
   - [Install EXPO](#install-expo)
   - [Expo App Creation](#expo-app-creation)
   - [App Testing](#app-testing)
@@ -7,7 +8,22 @@
 ## EXPO
 
 ### Upgrade NodeJS
-Check nodeJS version and upgrade to latest.
+Check nodeJS version and upgrade to latest. 
+
+Command to install
+```bash
+apt purge nodejs
+curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - 
+sudo apt-get install -y nodejs
+```
+Source: https://github.com/nodesource/distributions
+### Install NPM
+
+Check NPM version `npm -v`
+
+Command to Install `curl -qL https://www.npmjs.com/install.sh | sh`
+
+Source: https://github.com/npm/cli
 
 ### Install EXPO
 
