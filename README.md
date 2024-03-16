@@ -30,5 +30,5 @@ NPM app file creation `npx create-expo-app`
 
 To run your project, navigate to the directory and run one of the following npm commands.
 ```bash
-npm run android
+npx expo start
 ```
