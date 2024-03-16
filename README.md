@@ -1,7 +1,5 @@
 - [EXPO](#expo)
   - [Upgrade NodeJS](#upgrade-nodejs)
-  - [Install NPM](#install-npm)
-  - [Install EXPO](#install-expo)
   - [Expo App Creation](#expo-app-creation)
   - [App Testing](#app-testing)
 
@@ -21,14 +19,6 @@ Cleaning trace
 rm -r /etc/apt/sources.list.d/nodesource.list &&\
 rm -r /etc/apt/keyrings/nodesource.gpg
 ```
-Source: https://github.com/nodesource/distributions
-### Install NPM
-
-~~Check NPM version `npm -v`
-
-Command to Install `curl -qL https://www.npmjs.com/install.sh | sh`
-
-Source: https://github.com/npm/cli~~
 
 Troubleshoot NPM segmentation fault:
 ```bash
@@ -38,9 +28,11 @@ apt autoclean
 reinstall nodejs
 ```
 
+Source: https://github.com/nodesource/distributions https://github.com/npm/cli
+
 ### Expo App Creation
 
-NPM app file creation `expo init APP_NAME`
+NPM app file creation `npx expo init APP_NAME`
 
 
 ### App Testing
@@ -48,8 +40,8 @@ NPM app file creation `expo init APP_NAME`
 To run your project, navigate to the directory and run one of the following npm commands.
 ```bash
 - cd dawah
-- npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
-- npm run android
-- npm run ios # requires an iOS device or macOS for access to an iOS simulator
-- npm run web
+- npx npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
+- npx npm run android
+- npx npm run ios # requires an iOS device or macOS for access to an iOS simulator
+- npx npm run web
 ```
