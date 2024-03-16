@@ -32,16 +32,12 @@ Source: https://github.com/nodesource/distributions https://github.com/npm/cli
 
 ### Expo App Creation
 
-NPM app file creation `npx expo init APP_NAME`
+NPM app file creation `npx create-expo-app`
 
 
 ### App Testing
 
 To run your project, navigate to the directory and run one of the following npm commands.
 ```bash
-- cd dawah
-- npx npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
-- npx npm run android
-- npx npm run ios # requires an iOS device or macOS for access to an iOS simulator
-- npx npm run web
+npm run android
 ```
