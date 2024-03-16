@@ -1,7 +1,7 @@
 - [EXPO](#expo)
   - [Upgrade NodeJS](#upgrade-nodejs)
   - [Expo Commandsn](#expo-commands)
-  - [App Testing](#app-testing)
+  - [Creating App Bundle](#creating-app-bundle)
 
 ## EXPO
 
@@ -32,3 +32,19 @@ To run your project, navigate to the directory and run one of the following npm 
 ```bash
 npx expo start
 ```
+
+## Creating App Bundle
+
+Edit app.json, add `package` name and `versionCode` to the `android`  
+
+```json
+    "android": {
+      "package": "Dawah.bn.ZishanAdThandar",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/favicon.png",
+        "backgroundColor": "#ffffff"
+      }
+```
+
+
