@@ -47,4 +47,17 @@ Edit app.json, add `package` name and `versionCode` to the `android`
       }
 ```
 
+Installing EAS `npm install eas-cli`
+
+Generating App Bundle
+```bash
+expo login
+npx expo eas:init
+expo eas build -p android
+```
+
+Fetching Keystore
+```bash
+
+```
 
