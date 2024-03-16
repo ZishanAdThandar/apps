@@ -24,11 +24,11 @@ rm -r /etc/apt/keyrings/nodesource.gpg
 Source: https://github.com/nodesource/distributions
 ### Install NPM
 
-Check NPM version `npm -v`
+~~Check NPM version `npm -v`
 
 Command to Install `curl -qL https://www.npmjs.com/install.sh | sh`
 
-Source: https://github.com/npm/cli
+Source: https://github.com/npm/cli~~
 
 Troubleshoot NPM segmentation fault:
 ```bash
@@ -37,10 +37,6 @@ apt autoremove
 apt autoclean
 reinstall nodejs
 ```
-
-### Install EXPO
-
-Install expo `sudo npm install -g expo-cli`
 
 ### Expo App Creation
 
