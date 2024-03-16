@@ -30,6 +30,14 @@ Command to Install `curl -qL https://www.npmjs.com/install.sh | sh`
 
 Source: https://github.com/npm/cli
 
+Troubleshoot NPM segmentation fault:
+```bash
+rm /usr/bin/npm /usr/bin/nodejs /usr/local/bin/npm /usr/local/bin/nodejs
+apt autoremove
+apt autoclean
+reinstall nodejs
+```
+
 ### Install EXPO
 
 Install expo `sudo npm install -g expo-cli`
