@@ -31,12 +31,9 @@ Install `npm install expo`
 
 NPM app file creation `npx create-expo-app`
 
-Package Installation Check `npx expo install --check`
+Package Installation Check `npx expo install --check` or `npm install --check`
 
-To run your project, navigate to the directory and run one of the following npm commands.
-```bash
-npx expo start
-```
+To run your project, navigate to the directory and run one of the following npm commands. `npx expo start` or `npm start`.
 
 ## Creating App Bundle
 
