@@ -55,7 +55,7 @@ Generating App Bundle
 ```bash
 expo login
 npx expo eas:init
-expo eas build -p android
+expo eas build -p android # or # eas build -p android
 ```
 
 #### Keystore Management (Apps signing)
