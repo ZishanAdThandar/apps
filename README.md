@@ -69,9 +69,11 @@ Download `encryption_public_key.pem from` from google and create zip file using 
 
 Now upload the zip file as sigining key. Now you can upload created app bundle.
 
-Note: Save both zip file (downloaded and created zip) in a safe place for future update.
+## Note
 
-To recreate old app, goto codes and type ~~`npx expo init -t expo-template-blank@sdk-42 --name "Your App Name" --slug old-project`~~ Just use same slug to create the app.
+1. Save both zip file (downloaded and created zip) in a safe place for future update.
+2. To recreate old app, goto codes and type ~~`npx expo init -t expo-template-blank@sdk-42 --name "Your App Name" --slug old-project`~~ Just use same slug to create the app.
+3. Logout `npx expo logout` or `expo logout`.
 
 ***
 
