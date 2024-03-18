@@ -28,6 +28,8 @@ Install `npm install expo`
 
 NPM app file creation `npx create-expo-app`
 
+Package Installation Check `npx expo install --check`
+
 To run your project, navigate to the directory and run one of the following npm commands.
 ```bash
 npx expo start
