@@ -65,7 +65,7 @@ Goto https://expo.dev/accounts/zishanadthandar/projects/dawahbanglah/credentials
 Download zip. You can get `jks` file and credential details file inside it. Rename `key.jks` to `key.keystore`.
 
 
-Download `encryption_public_key.pem from` from google and create zip file using following command `java -jar pepk.jar --keystore=key.keystore --alias=********** --output=output.zip --include-cert --rsa-aes-encryption --encryption-key-path=encryption_public_key.pem`.
+Download `encryption_public_key.pem from` and `pepk.jar` from google and create zip file using following command `java -jar pepk.jar --keystore=key.keystore --alias=********** --output=output.zip --include-cert --rsa-aes-encryption --encryption-key-path=encryption_public_key.pem`.
 
 Now upload the zip file as sigining key. Now you can upload created app bundle.
 
