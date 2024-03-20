@@ -1,5 +1,3 @@
-
-
 import React, {Component} from 'react';
 import { StyleSheet, Text, ScrollView, View, StatusBar, TextInput, Button, Image, Linking } from 'react-native';
 
