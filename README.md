@@ -79,6 +79,9 @@ Now upload the zip file as sigining key. Now you can upload created app bundle.
 
 ## React Native
 
+Creat folder `npx react-native init MyProject`
+
+Starting project `npx react-native run-android` or `npx react-native run-ios`
 ***
 
 ## Flutter
