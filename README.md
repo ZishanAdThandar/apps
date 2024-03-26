@@ -27,7 +27,7 @@ Source: https://github.com/nodesource/distributions https://github.com/npm/cli
 
 ### Expo Commands
 
-Install `npm install expo`
+Install `npm install -g expo`
 
 NPM app file creation `npx create-expo-app`
 
