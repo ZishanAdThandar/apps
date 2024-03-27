@@ -49,6 +49,10 @@ Edit app.json, add `package` name and `versionCode` to the `android`
       }
 ```
 
+Installing expo doctor `npm install -g expo-doctor`
+
+Checking error with expo doctor `npx -y expo-doctor` or `expo doctor`
+
 Installing EAS `npm install eas-cli`
 
 Generating App Bundle
