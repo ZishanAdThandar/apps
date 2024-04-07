@@ -86,16 +86,20 @@ Now upload the zip file as sigining key. Now you can upload created app bundle.
 Creat folder `npx react-native init MyProject`
 
 Starting project `npx react-native run-android` or `npx react-native run-ios`
+
 ***
 
 ## Flutter
 
+### Installing Flutter
 1. Download Flutter tar.xz file
 2. Extract `tar xf flutter_linux_1.22.4-stable.tar.xz`
 3. move `mv flutter /usr/bin/flutter`
-4. Setting Path `export PATH="$PATH:/usr/bin/flutter/bin/" >> ~/.bashrc`
+4. Setting Path `export PATH="$PATH:/usr/bin/flutter/bin/" >> ~/.bashrc` [For all users]
+5. Change user permission `chown user /usr/bin/flutter`
 
-
+### Creating App
+1. 
 
 
 
