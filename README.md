@@ -90,10 +90,10 @@ Starting project `npx react-native run-android` or `npx react-native run-ios`
 
 ## Flutter
 
-
-
-
-
+1. Download Flutter tar.xz file
+2. Extract `tar xf flutter_linux_1.22.4-stable.tar.xz`
+3. move `mv flutter /usr/bin/flutter`
+4. Setting Path `export PATH="$PATH:/usr/bin/flutter/bin/" >> ~/.bashrc`
 
 
 
