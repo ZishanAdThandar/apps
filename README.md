@@ -4,6 +4,9 @@
   - [Creating App Bundle](#creating-app-bundle)
 - [React Native](#react-native)
 - [Flutter](#flutter)
+  - [Installing Flutter](#installing-flutter) 
+  - [Installing Adnroid Studio](#installing-adnroid-studio) 
+  - [Creating App](#creating-app) 
 
 ***
 ## EXPO
