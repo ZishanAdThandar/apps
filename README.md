@@ -96,11 +96,16 @@ Starting project `npx react-native run-android` or `npx react-native run-ios`
 
 ### Installing Flutter
 1. Download Flutter tar.xz file
-2. Extract `tar xf flutter_linux_1.22.4-stable.tar.xz`
+2. Extract `tar xf flutter_linux_*-stable.tar.xz`
 3. move `mv flutter /usr/bin/flutter`
 4. Setting Path `export PATH="$PATH:/usr/bin/flutter/bin/" >> ~/.bashrc` [For all users]
 5. Change user permission `chown user /usr/bin/flutter`
 6. Run `flutter doctor` command to check errors.
+
+### Installing Android Studio
+1. Download Android Studio from https://developer.android.com/studio
+2. Extract with `tar xfz android-studio-*-linux.tar.gz`
+3. Move `android-studio` folder to `/opt` and goto `/opt/android-studio/bin` run `./studio.sh`.
 
 ### Creating App
 1. 
