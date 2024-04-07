@@ -98,7 +98,8 @@ Starting project `npx react-native run-android` or `npx react-native run-ios`
 1. Download Flutter tar.xz file
 2. Extract `tar xf flutter_linux_*-stable.tar.xz`
 3. move `mv flutter /usr/bin/flutter`
-4. Setting Path `export PATH="$PATH:/usr/bin/flutter/bin/" >> ~/.bashrc` [For all users]
+4. Setting Path `echo 'export PATH="$PATH:/usr/bin/flutter/bin"' >> ~/.bashrc && source ~/.bashrc
+` [Run as users]
 5. Change user permission `chown user /usr/bin/flutter`
 6. Run `flutter doctor` command to check errors.
 
