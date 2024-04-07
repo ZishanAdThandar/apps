@@ -97,6 +97,7 @@ Starting project `npx react-native run-android` or `npx react-native run-ios`
 3. move `mv flutter /usr/bin/flutter`
 4. Setting Path `export PATH="$PATH:/usr/bin/flutter/bin/" >> ~/.bashrc` [For all users]
 5. Change user permission `chown user /usr/bin/flutter`
+6. Run `flutter doctor` command to check errors.
 
 ### Creating App
 1. 
