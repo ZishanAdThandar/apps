@@ -106,7 +106,8 @@ Starting project `npx react-native run-android` or `npx react-native run-ios`
 1. Download Android Studio from https://developer.android.com/studio
 2. Extract with `tar xfz android-studio-*-linux.tar.gz`
 3. Move `android-studio` folder to `/opt` and goto `/opt/android-studio/bin` run `./studio.sh`.
-4. Android SDK Installation: Open Android Studio > Tools > SDK Manager > SDK Tools > Select "SDK Command Line Tools" and APPLY
+4. Goto "Plugin" install "flutter"
+5. Android SDK Installation: Open Android Studio > Tools > SDK Manager > SDK Tools > Select "SDK Command Line Tools" and APPLY
 
 
 1. Install required tools, apt install clang cmake ninja-build libgtk-3-dev -y
