@@ -5,7 +5,7 @@
 - [React Native](#react-native)
 - [Flutter](#flutter)
   - [Installing Flutter](#installing-flutter) 
-  - [Installing Adnroid Studio](#installing-adnroid-studio) 
+  - [Installing Android Studio](#installing-adnroid-studio) 
   - [Creating App](#creating-app) 
 
 ***
@@ -100,7 +100,7 @@ Starting project `npx react-native run-android` or `npx react-native run-ios`
 3. move `mv flutter /usr/bin/flutter`
 4. Setting Path `echo 'export PATH="$PATH:/usr/bin/flutter/bin"' >> ~/.bashrc && source ~/.bashrc
 ` [Run as users]
-5. Change user permission `chown -R user:user /usr/bin/flutter`
+5. Change user permission `sudo chown -R user:user /usr/bin/flutter`
 
 ### Installing Android Studio
 1. Download Android Studio from https://developer.android.com/studio
