@@ -4,50 +4,82 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 import subprocess
+import threading
 
 print("NMAP GUI with Python3 for Linux")
 print("by")
 print("Zishan Ahamed Thandar")
 
+# Global variable to keep track of the subprocess
+process = None
+
+# Function to update the displayed command
+def update_command_display(*args):
+    target_ip = ip_entry.get()
+    scan_type = scan_type_var.get()
+    command = get_command(scan_type, target_ip)
+    command_text.set(command)
+    command_label.config(fg="black")  # Reset color to black
+
 # Function to perform nmap scan
 def scan_ip():
+    global process
+
+    # Cancel previous scan if it is running
+    if process and process.poll() is None:
+        process.terminate()
+        process.wait()  # Wait for the process to terminate
+
     target_ip = ip_entry.get()
     scan_type = scan_type_var.get()
 
-    # Disable the scan button to prevent multiple scans
-    scan_button.config(state=tk.DISABLED)
+    # Update and color command
+    command = get_command(scan_type, target_ip)
+    command_text.set(command)
+    command_label.config(fg="red")  # Set color to red when scan starts
 
     # Clear previous output
     output_text.delete('1.0', tk.END)
 
-    try:
-        if scan_type == "Quick Scan":
-            command = f"nmap {target_ip} -T5"
-        elif scan_type == "Quick Scan All Ports":
-            command = f"nmap {target_ip} -p- -T5"
-        elif scan_type == "Aggressive Scan":
-            command = f"nmap -A {target_ip} -T5"
-        elif scan_type == "UDP Scan":
-            command = f"nmap -sU {target_ip} -T5"
-        elif scan_type == "Ping Scan":
-            command = f"nmap -sn {target_ip} -T5"
-        elif scan_type == "Aggressive Scan All Ports":
-            command = f"nmap -A -Pn -p- {target_ip} -T5"
+    def run_scan():
+        global process
 
-        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        command = get_command(scan_type, target_ip)
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-        # Insert the nmap output
-        output_text.insert(tk.END, result.stdout)
-        if result.stderr:
-            output_text.insert(tk.END, f"\nErrors:\n{result.stderr}")
+        # Read the output live
+        for line in iter(process.stdout.readline, ''):
+            output_text.insert(tk.END, line)
+            output_text.yview(tk.END)  # Auto-scroll to the end
 
-        # Enable the scan button again after the scan completes
-        scan_button.config(state=tk.NORMAL)
-        
-    except Exception as e:
-        output_text.delete('1.0', tk.END)  # Clear the text widget
-        output_text.insert(tk.END, f"An error occurred: {str(e)}")  # Insert the error message
-        scan_button.config(state=tk.NORMAL)
+        # If there are any errors, display them
+        stderr = process.stderr.read()
+        if stderr:
+            output_text.insert(tk.END, f"\nErrors:\n{stderr}")
+
+        process.stdout.close()
+        process.stderr.close()
+
+        # Update color to green after scan completion
+        command_label.config(fg="green")
+    
+    # Run the scan in a separate thread
+    scan_thread = threading.Thread(target=run_scan)
+    scan_thread.start()
+
+def get_command(scan_type, target_ip):
+    if scan_type == "Quick Scan":
+        return f"nmap {target_ip} -T5"
+    elif scan_type == "Quick Scan All Ports":
+        return f"nmap {target_ip} -p- -T5"
+    elif scan_type == "Aggressive Scan":
+        return f"nmap -A {target_ip} -T5"
+    elif scan_type == "UDP Scan":
+        return f"nmap -sU {target_ip} -T5"
+    elif scan_type == "Ping Scan":
+        return f"nmap -sn {target_ip} -T5"
+    elif scan_type == "Aggressive Scan All Ports":
+        return f"nmap -A -Pn -p- {target_ip} -T5"
 
 # Function to save the output to a file
 def save_output():
@@ -71,6 +103,7 @@ ip_label = tk.Label(root, text="Target IP:")
 ip_label.grid(row=0, column=0, padx=5, pady=5)
 ip_entry = tk.Entry(root)
 ip_entry.grid(row=0, column=1, padx=5, pady=5)
+ip_entry.bind("<KeyRelease>", update_command_display)  # Update command on IP change
 
 # Scan type dropdown
 scan_type_var = tk.StringVar()
@@ -80,6 +113,7 @@ scan_type_label.grid(row=1, column=0, padx=5, pady=5)
 scan_type_dropdown = ttk.Combobox(root, textvariable=scan_type_var)
 scan_type_dropdown['values'] = ("Quick Scan", "Quick Scan All Ports", "Aggressive Scan", "UDP Scan", "Ping Scan", "Aggressive Scan All Ports")
 scan_type_dropdown.grid(row=1, column=1, padx=5, pady=5)
+scan_type_var.trace_add('write', update_command_display)  # Update command on scan type change
 
 # Scan button
 scan_button = tk.Button(root, text="Scan", command=scan_ip)
@@ -89,9 +123,14 @@ scan_button.grid(row=2, column=0, columnspan=2, pady=10)
 save_button = tk.Button(root, text="Save Output", command=save_output)
 save_button.grid(row=2, column=1, padx=5, pady=10)
 
+# Command display
+command_text = tk.StringVar()
+command_label = tk.Label(root, textvariable=command_text)
+command_label.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
+
 # Output text widget with scrollbar
 output_frame = tk.Frame(root)
-output_frame.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
+output_frame.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
 
 scrollbar = tk.Scrollbar(output_frame)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
@@ -99,6 +138,9 @@ scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 output_text = tk.Text(output_frame, height=15, width=50, yscrollcommand=scrollbar.set)
 output_text.pack(side=tk.LEFT, fill=tk.BOTH)
 scrollbar.config(command=output_text.yview)
+
+# Initialize the command display
+update_command_display()
 
 # Run the application
 root.mainloop()
