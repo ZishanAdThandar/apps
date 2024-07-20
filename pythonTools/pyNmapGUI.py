@@ -5,10 +5,17 @@ from tkinter import ttk
 from tkinter import filedialog
 import subprocess
 import threading
+import platform
 
-print("NMAP GUI with Python3 for Linux")
+print("NMAP GUI with Python3")
 print("by")
 print("Zishan Ahamed Thandar")
+
+# Determine OS and set nmap path accordingly
+if platform.system() == "Windows":
+    nmap_path = "C:\\Program Files (x86)\\Nmap\\nmap.exe"
+else:
+    nmap_path = "nmap"  # Default for Linux
 
 # Global variable to keep track of the subprocess
 process = None
@@ -47,21 +54,28 @@ def scan_ip():
         command = get_command(scan_type, target_ip)
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-        # Read the output live
-        for line in iter(process.stdout.readline, ''):
-            output_text.insert(tk.END, line)
-            output_text.yview(tk.END)  # Auto-scroll to the end
+        try:
+            # Read the output live
+            for line in iter(process.stdout.readline, ''):
+                if line:
+                    output_text.insert(tk.END, line)
+                    output_text.yview(tk.END)  # Auto-scroll to the end
 
-        # If there are any errors, display them
-        stderr = process.stderr.read()
-        if stderr:
-            output_text.insert(tk.END, f"\nErrors:\n{stderr}")
+            # If there are any errors, display them
+            stderr = process.stderr.read()
+            if stderr:
+                output_text.insert(tk.END, f"\nErrors:\n{stderr}")
 
-        process.stdout.close()
-        process.stderr.close()
+        except Exception as e:
+            output_text.insert(tk.END, f"\nAn error occurred: {str(e)}")
 
-        # Update color to green after scan completion
-        command_label.config(fg="green")
+        finally:
+            process.stdout.close()
+            process.stderr.close()
+            process = None
+
+            # Update color to green after scan completion
+            command_label.config(fg="green")
     
     # Run the scan in a separate thread
     scan_thread = threading.Thread(target=run_scan)
@@ -69,17 +83,17 @@ def scan_ip():
 
 def get_command(scan_type, target_ip):
     if scan_type == "Quick Scan":
-        return f"nmap {target_ip} -T5"
+        return f"{nmap_path} {target_ip} -T5"
     elif scan_type == "Quick Scan All Ports":
-        return f"nmap {target_ip} -p- -T5"
+        return f"{nmap_path} {target_ip} -p- -T5"
     elif scan_type == "Aggressive Scan":
-        return f"nmap -A {target_ip} -T5"
+        return f"{nmap_path} -A {target_ip} -T5"
     elif scan_type == "UDP Scan":
-        return f"nmap -sU {target_ip} -T5"
+        return f"{nmap_path} -sU {target_ip} -T5"
     elif scan_type == "Ping Scan":
-        return f"nmap -sn {target_ip} -T5"
+        return f"{nmap_path} -sn {target_ip} -T5"
     elif scan_type == "Aggressive Scan All Ports":
-        return f"nmap -A -Pn -p- {target_ip} -T5"
+        return f"{nmap_path} -A -Pn -p- {target_ip} -T5"
 
 # Function to save the output to a file
 def save_output():
