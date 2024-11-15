@@ -32,7 +32,7 @@ Source: https://github.com/nodesource/distributions https://github.com/npm/cli
 
 Install `npm install -g expo`
 
-NPM app file creation `npx create-expo-app`
+NPM app file creation `npx create-expo-app` or `npx create-expo-app my-app --template blank`
 
 Package Installation Check `npx expo install --check` or `npm install --check`
 
