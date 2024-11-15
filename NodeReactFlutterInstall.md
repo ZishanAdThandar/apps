@@ -61,6 +61,7 @@ Installing EAS `npm install eas-cli`
 Generating App Bundle
 ```bash
 expo login
+npx expo-cli eas:init
 npx expo eas:init
 expo eas build -p android # or # eas build -p android
 ```
