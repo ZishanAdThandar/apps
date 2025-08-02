@@ -71,7 +71,7 @@ render(){
   let Splash_Screen = (
      <View style={styles.SplashScreen_RootView}>
          <View style={styles.SplashScreen_ChildView}>
-               <Image source={require('./assets/panel.jpg')}
+               <Image source={require('./assets/panel.png')}
             style={{width:'100%', height: '100%', resizeMode: 'contain'}} />
         </View>
      </View> )
